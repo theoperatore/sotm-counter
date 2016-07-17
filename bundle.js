@@ -244,6 +244,15 @@ exports.default = _react2.default.createClass({
       { className: 'flex flex-column flex-auto' },
       _react2.default.createElement(
         'div',
+        { className: 'p2' },
+        _react2.default.createElement(
+          'h1',
+          { className: 'total-count m0' },
+          this.props.tens * 10 + this.props.ones
+        )
+      ),
+      _react2.default.createElement(
+        'div',
         { className: 'flex-auto flex-wrap p1 overflow-auto' },
         this.renderTokens()
       ),

@@ -117,6 +117,9 @@ export default React.createClass({
 
   render() {
     return <section className='flex flex-column flex-auto'>
+      <div className='p2'>
+        <h1 className='total-count m0'>{(this.props.tens * 10) + this.props.ones}</h1>
+      </div>
       <div className='flex-auto flex-wrap p1 overflow-auto'>
         { this.renderTokens() }
       </div>

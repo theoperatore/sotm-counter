@@ -44,6 +44,10 @@ button:active {
   margin: 2px;
 }
 
+.total-count {
+  font-size: 55px;
+}
+
 .sotm-token-container {
   display: inline-block;
   background-color: #fff;
