@@ -41,7 +41,7 @@ button:active {
 }
 
 .token-container {
-  margin: 3px;
+  margin: 2px;
 }
 
 .sotm-token-container {
@@ -54,7 +54,7 @@ button:active {
   font-size: 35px;
   text-align: center;
   overflow: hidden;
-  margin-right: 5px;
+  border: 1px solid #000;
 }
 
 .sotm-token-container:last-of-type {
