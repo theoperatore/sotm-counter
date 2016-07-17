@@ -43,7 +43,7 @@ const App = React.createClass({
           <span className='mr2 flex-auto'>{
             this.state.mode === 'numbers'
             ? 'Counter'
-            : 'Tokens'
+            : 'SotM Tokens'
           }</span>
           <span className='fa fa-arrow-right'></span>
         </p>
