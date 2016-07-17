@@ -19,6 +19,10 @@ nav {
   border-bottom: 1px solid #000;
 }
 
+nav:active {
+  background-color: rgba(0,0,0,0.23);
+}
+
 button {
   appearance: none;
   -webkit-appearance: none;
@@ -34,4 +38,100 @@ button:active {
 
 .counter-number {
   font-size: 60px;
+}
+
+.token-container {
+  margin: 3px;
+}
+
+.sotm-token-container {
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+  line-height: 65px;
+  font-size: 35px;
+  text-align: center;
+  overflow: hidden;
+  margin-right: 5px;
+}
+
+.sotm-token-container:last-of-type {
+  margin-right: 0;
+}
+
+.sotm-token-star {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  background-color: gold;
+  border: 1px solid #333;
+}
+
+.sotm-token-star:before,
+.sotm-token-star:after {
+  content: " ";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  background-color: gold;
+  border: 1px solid #333;
+}
+
+.sotm-token-star:before {
+  transform: rotate(30deg);
+}
+
+.sotm-token-star:after {
+  transform: rotate(60deg);
+}
+
+.sotm-token {
+  position: relative;
+  z-index: 100;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  line-height: 45px;
+  border: 2px solid #333;
+}
+
+.sotm-token.type-25 {
+  background-color: purple;
+  box-shadow: inset 0px 0px 10px 10px rgba(0,0,0, 0.25);
+}
+
+.sotm-token.type-10 {
+  background-color: gray;
+  box-shadow: inset 0px 0px 10px 10px rgba(0,0,0, 0.25);
+}
+
+
+.sotm-token.type-5 {
+  background-color: green;
+  box-shadow: inset 0px 0px 10px 10px rgba(0,0,0, 0.25);
+}
+
+.sotm-token.type-1 {
+  background-color: red;
+  box-shadow: inset 0px 0px 10px 10px rgba(0,0,0, 0.25);
+}
+
+footer {
+  border-top: 1px solid #000;
+  height: 60px;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+footer div:active {
+  background-color: rgba(0,0,0,0.23);
 }

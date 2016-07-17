@@ -6,6 +6,7 @@ import fastclick from 'fastclick';
 import debug from 'debug';
 
 import Counter from './Counter';
+import Tokens from './Tokens';
 
 let mount = document.querySelector('#mount');
 
@@ -16,7 +17,7 @@ const App = React.createClass({
 
   getInitialState() {
     return {
-      mode: 'numbers',
+      mode: 'token',
       ones: 0,
       tens: 0,
     }
@@ -37,9 +38,13 @@ const App = React.createClass({
 
   render() {
     return <div className='full-height flex flex-column'>
-      <nav className='p2'>
-        <p className='p0 m0'>
-          <span className='mr2'>Sentinels of the Multiverse Counter</span>
+      <nav className='p2' onClick={() => this.setState({ mode: this.state.mode === 'numbers' ? 'token' : 'numbers' })}>
+        <p className='p0 m0 flex'>
+          <span className='mr2 flex-auto'>{
+            this.state.mode === 'numbers'
+            ? 'Counter'
+            : 'Tokens'
+          }</span>
           <span className='fa fa-arrow-right'></span>
         </p>
       </nav>
@@ -50,7 +55,11 @@ const App = React.createClass({
             tens={this.state.tens}
             onUpdate={this.handleUpdate}
           />
-        : null
+        : <Tokens
+            ones={this.state.ones}
+            tens={this.state.tens}
+            onUpdate={this.handleUpdate}
+          />
       }
     </div>
   }
