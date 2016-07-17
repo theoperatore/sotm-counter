@@ -4,55 +4,34 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
+  font-family: helvetica, sans-serif;
+  font-size: 1em;
+  background-color: #333;
+  color: #fff;
 }
 
 #mount,
-section {
+.full-height {
   height: 100%;
 }
 
-.row {
-  width: 100%;
-  display: block;
-  height: 33.3333333vh;
-  height: 33.33%;
-}
-
-.col {
-  height: 100%;
-  width: 50%;
-  float: left;
-}
-
-section:after,
-.col:after,
-.row:after,
-.left:after,
-.right:after {
-  display: table;
-  content: '';
-  clear: both;
-}
-
-.left {
-  float: left;
-}
-
-.right {
-  float: right;
+nav {
+  border-bottom: 1px solid #000;
 }
 
 button {
-  width: 100%;
-  height: 100%;
   appearance: none;
-  border-radius: 1px;
-  font-size: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 0;
+  background-color: transparent;
+  color: inherit;
 }
 
-p {
-  text-align: center;
+button:active {
+  background-color: rgba(0,0,0,0.23);
+}
+
+.counter-number {
   font-size: 60px;
-  line-height: 1;
 }
-

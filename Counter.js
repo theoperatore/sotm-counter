@@ -3,13 +3,20 @@
 import React from 'react';
 import debug from 'debug';
 
-const log = debug('counter');
+const log = debug('sotm:counter');
 
 export default React.createClass({
   displayName: 'Counter',
 
 
-  getInitialState() {
+  propTypes: {
+    ones: React.PropTypes.number,
+    tens: React.PropTypes.number,
+    onUpdate: React.PropTypes.func.isRequired,
+  },
+
+
+  getDefaultProps() {
     return {
       ones: 0,
       tens: 0,
@@ -17,28 +24,12 @@ export default React.createClass({
   },
 
 
-  componentDidMount() {
-    let prev = window.localStorage.getItem('sotm_counter');
-    if (prev) {
-      log('setting previous state', prev);
-      this.setState(JSON.parse(prev));
-    }
-  },
-
-
-  saveState(state) {
-    log('saving current state', state);
-    window.localStorage.setItem('sotm_counter', JSON.stringify(state));
-  },
-
-
   increment(digit) {
-    log(`increment ${digit}`);
-    let num = this.state[digit] + 1;
+    let num = this.props[digit] + 1;
 
     let newState = {
-      ones: this.state.ones,
-      tens: this.state.tens
+      ones: this.props.ones,
+      tens: this.props.tens
     }
 
     newState[digit] = num;
@@ -48,18 +39,17 @@ export default React.createClass({
       newState.ones = 0;
     }
 
-    this.setState(newState);
-    this.saveState(newState);
+    log('increment %s: %o', digit, newState);
+    this.props.onUpdate(newState);
   },
 
 
   decrement(digit) {
-    log(`decrement ${digit}`);
-    let num = this.state[digit] - 1;
+    let num = this.props[digit] - 1;
 
     let newState = {
-      ones: this.state.ones,
-      tens: this.state.tens
+      ones: this.props.ones,
+      tens: this.props.tens
     }
 
     newState[digit] = num;
@@ -71,26 +61,28 @@ export default React.createClass({
 
     newState.tens = newState.tens < 0 ? 0 : newState.tens;
 
-    this.setState(newState);
-    this.saveState(newState);
+    log('decrement %s: %o', digit, newState);
+    this.props.onUpdate(newState);
   },
 
 
   render() {
     return (
-      <section>
-        <div className='row'>
-          <div className='col'><button className='right' onClick={this.increment.bind(this, 'tens')}>+</button></div>
-          <div className='col'><button className='left' onClick={this.increment.bind(this, 'ones')}>+</button></div>
-        </div>
-        <div className='row'>
-          <div className='col'><p>{this.state.tens}</p></div>
-          <div className='col'><p>{this.state.ones}</p></div>
-        </div>
-        <div className='row'>
-          <div className='col'><button className='right'onClick={this.decrement.bind(this, 'tens')}>-</button></div>
-          <div className='col'><button className='left' onClick={this.decrement.bind(this, 'ones')}>-</button></div>
-        </div>
+      <section className='full-height flex flex-wrap center'>
+        <button className='col-6' onClick={this.increment.bind(this, 'tens')}>
+          <span className='fa fa-arrow-up'></span>
+        </button>
+        <button className='col-6' onClick={this.increment.bind(this, 'ones')}>
+          <span className='fa fa-arrow-up'></span>
+        </button>
+        <h1 className='col-6 counter-number self-center p0 m0'>{this.props.tens}</h1>
+        <h1 className='col-6 counter-number self-center p0 m0'>{this.props.ones}</h1>
+        <button className='col-6' onClick={this.decrement.bind(this, 'tens')}>
+          <span className='fa fa-arrow-down'></span>
+        </button>
+        <button className='col-6' onClick={this.decrement.bind(this, 'ones')}>
+          <span className='fa fa-arrow-down'></span>
+        </button>
       </section>
     );
   }
